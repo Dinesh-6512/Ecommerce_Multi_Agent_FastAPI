@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+sqlalchemy
+psycopg2
+langchain
+langgraph
+langchain-groq
+passlib[bcrypt]
+PyJWT
+pydantic
+python-dotenv
