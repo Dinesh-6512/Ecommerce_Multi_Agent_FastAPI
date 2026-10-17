@@ -1,15 +1,29 @@
+
+import os
+from pathlib import Path
 from datetime import datetime, timedelta
+
 import jwt
 from passlib.context import CryptContext
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
+from dotenv import load_dotenv
+
 from backend import models, database
 
-# Simple secret key for development
-SECRET_KEY = "my_super_secret_key"
+# Load the .env file from the project root
+load_dotenv(Path(__file__).resolve().parent.parent / ".env")
+
+# Read the secret key from the environment
+SECRET_KEY = os.getenv("SECRET_KEY")
+
+if not SECRET_KEY:
+    raise RuntimeError("SECRET_KEY is not configured in the .env file")
+
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
+
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/login")

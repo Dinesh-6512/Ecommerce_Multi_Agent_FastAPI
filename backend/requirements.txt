@@ -9,3 +9,4 @@ passlib[bcrypt]
 PyJWT
 pydantic
 python-dotenv
+psycopg2-binary
