@@ -10,3 +10,4 @@ PyJWT
 pydantic
 python-dotenv
 psycopg2-binary
+python-multipart
